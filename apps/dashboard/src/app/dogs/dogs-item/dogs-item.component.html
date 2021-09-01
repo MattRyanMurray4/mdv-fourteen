@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center mt-3">
+  <button mat-button [routerLink]="['/dogs']">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <mat-card class="col-6" *ngIf="currentDog$ | async as dog">
+    <mat-card-header class="align-self-center">
+      <mat-card-title>
+        <h3 matLine>Dog Id</h3>
+        <p matLine>{{ dog.id }}</p>
+
+        <h3 matLine>Dog Name</h3>
+        <p matLine>{{ dog.name }}</p>
+
+        <h3 matLine>Dog Breed</h3>
+        <p matLine>{{ dog.breed }}</p>
+
+        <h3 matLine>Dog Age</h3>
+        <p matLine>{{ dog.age }}</p>
+
+        <h3 matLine>Favorite Treats</h3>
+        <p matLine>{{ dog.favoriteTreats }}</p>
+
+        <h3 matLine>Potty Trained</h3>
+        <p matLine>{{ dog.pottyTrained }}</p>
+      </mat-card-title>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<div class="col-50" layout="row" layout-align="center center">
+  <pets-dogs-item [dog]="currentDog$ | async"></pets-dogs-item>
+</div>

@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title *ngIf="currentDog.id; else createNew">
+      <h1>Update {{ originalName }}</h1>
+    </mat-card-title>
+    <ng-template #createNew>
+      <h1>Submit a New Dog</h1>
+    </ng-template>
+  </mat-card-header>
+  <form
+    [formGroup]="form"
+    #formDirective="ngForm"
+    (ngSubmit)="saveForm(formDirective)"
+  >
+    <mat-card-content>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+          name="name"
+        />
+        <mat-error *ngIf="form.get('name')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Breed</mat-label>
+        <input
+          matInput
+          placeholder="Breed"
+          formControlName="breed"
+          type="text"
+          name="breed"
+        />
+        <mat-error *ngIf="form.get('breed')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Age</mat-label>
+        <input
+          matInput
+          placeholder="Age"
+          formControlName="age"
+          type="text"
+          name="age"
+        />
+        <mat-error *ngIf="form.get('age')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline" floatlabel>
+        <mat-label>Favorite Treats</mat-label>
+        <input
+          matInput
+          placeholder="Favorite Treats"
+          formControlName="favoriteTreats"
+          type="text"
+          name="favoriteTreats"
+        />
+        <mat-error *ngIf="form.get('favoriteTreats')">Required Field</mat-error>
+      </mat-form-field>
+      <section>
+        <mat-checkbox formControlName="pottyTrained" placeholder="Potty Trained"
+          >Potty Trained</mat-checkbox
+        >
+      </section>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-button [disabled]="form.invalid">
+        {{ currentDog.id ? 'Submit' : 'Create' }}
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title> <h1>Select a Dog</h1> </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let dog of dogs"
+        (click)="selected.emit(dog)"
+        class="mat-list-item"
+      >
+        <h1 matLine>{{ dog.name }}</h1>
+        <p matLine>{{ dog.breed }}</p>
+        <button
+          mat-icon-button
+          (click)="deleted.emit(dog); $event.stopImmediatePropagation()"
+        >
+          <mat-icon *ngIf="!readonly">delete</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="mr-2"
+          [routerLink]="dog.id"
+          routerLinkActive="active"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
