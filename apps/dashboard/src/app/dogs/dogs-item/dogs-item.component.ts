@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class DogsItemComponent implements OnInit {
   @Input() dog: Dog | null;
-  currentDog$ = this.dogsFacade.selectedDogs$;
+  currentDog$: Observable<Dog> = this.dogsFacade.selectedDogs$;
   constructor(private route: ActivatedRoute, private dogsFacade: DogsFacade) {}
 
   ngOnInit() {

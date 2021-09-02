@@ -26,12 +26,11 @@ export class LoginComponent implements OnInit {
     this.initForm();
   }
 
-  login(): any {
+  login() {
     const inputedUser: User = this.form.value;
     this.notify.notification('Invalid User');
-    if (this.form.invalid) {
-      return false;
-    } else {
+    if (this.form.invalid) return;
+    else {
       if (
         inputedUser.email === this.userInfo.email &&
         inputedUser.password === this.userInfo.password
